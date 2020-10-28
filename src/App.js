@@ -1,7 +1,8 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
-import MainPage from "./pages/MainPage";
+import MainPage from './pages/MainPage';
+import DetailPage from './pages/DetailPage';
 
 class App extends Component {
   constructor(props) {
@@ -28,6 +29,7 @@ class App extends Component {
             path="/"
             render={() => <MainPage searchText={searchText} onSearchText={this.onSearchText} />}
           />
+          <Route path="/detail-page" component={DetailPage}/>
         </Switch>
       </BrowserRouter>
     );
