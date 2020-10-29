@@ -7,11 +7,11 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchData: "Faz ae Luiz",
-      searchText: "",
+      searchData: 'Faz ae Luiz',
+      searchText: ''
     };
 
-    this.onSearchData = this.onSearchData.bind(this);
+    this.onSearchData = this.onSearchData.bind(this)
   }
 
   onSearchData(event) {
@@ -30,7 +30,6 @@ class App extends Component {
             render={() => (
               <Mainpage
                 searchText={this.state.searchText}
-                searchData={this.state.searchData}
                 onSearchData={this.onSearchData}
               />
             )}
@@ -41,7 +40,6 @@ class App extends Component {
             render={() => (
               <Searchpage
                 searchText={this.state.searchText}
-                searchData={this.state.searchData}
                 onSearchData={this.onSearchData}
               />
             )}
