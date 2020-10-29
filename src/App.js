@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
