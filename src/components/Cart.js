@@ -20,14 +20,12 @@ class CartIcon extends Component {
   render() {
 
     const {results} = this.props.data;
-    console.log(this.props.data)
-
 
     return (
       
       <div>
         <button onClick={this.openCart}>
-          <h1>icon</h1>
+          <span>icon</span>
         </button>
         {this.state.opened && (
           <div>
