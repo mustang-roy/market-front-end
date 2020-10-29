@@ -1,53 +1,40 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
-import Mainpage from "./pages/Mainpage";
-import Searchpage from "./pages/Searchpage";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+
+import MainPage from './pages/MainPage';
+import DetailPage from './pages/DetailPage';
+
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      searchData: 'Faz ae Luiz',
-      searchText: ''
-    };
 
-    this.onSearchData = this.onSearchData.bind(this)
-  }
+    this.onSearchText = this.onSearchText.bind(this);
 
-  onSearchData(event) {
-    this.setState({
-      searchText: event.target.value,
-    });
-  }
+    this.state = { searchText: '' };
+  };
+
+  onSearchText(event) {
+    const { value } = event.target;
+    this.setState({ searchText: value });
+  };
 
   render() {
+    const { searchText } = this.state;
+
     return (
       <BrowserRouter>
         <Switch>
           <Route
             exact
             path="/"
-            render={() => (
-              <Mainpage
-                searchText={this.state.searchText}
-                onSearchData={this.onSearchData}
-              />
-            )}
+            render={() => <MainPage searchText={searchText} onSearchText={this.onSearchText} />}
           />
-          <Route
-            exact
-            path="/searchbar"
-            render={() => (
-              <Searchpage
-                searchText={this.state.searchText}
-                onSearchData={this.onSearchData}
-              />
-            )}
-          />
+          <Route path="/detail-page" component={DetailPage}/>
         </Switch>
       </BrowserRouter>
     );
-  }
+  };
 }
 
 export default App;
