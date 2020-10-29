@@ -8,6 +8,7 @@ import Cart from "../components/Cart";
 class MainPage extends Component {
   render() {
     const { searchText, onSearchData } = this.props;
+    
     return (
       <div>
         <SearchBar searchText={searchText} onSearchData={onSearchData} />

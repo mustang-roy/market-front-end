@@ -6,20 +6,20 @@ import { Footer, Header, Main, Wrapper } from './style';
 import Button from '../Button';
 
 function DefaultWrapper(props) {
-  const { header, children, footer } = props;
+  const { wrapperInfo, children, render } = props;
 
   return (
     <Wrapper>
       <Header>
-        {header.title}
+        {wrapperInfo.title}
         {
-          !header.isCart && (
-            <Button as={Link} to={header.buttonTextLink}>
-              {header.buttonText}
+          wrapperInfo.showHeaderButton && (
+            <Button as={Link} to="/cart">
+              Ir para o carrinho
             </Button>
           )
         }
-        <Button as={Link} to={header.buttonTextLink}>
+        <Button as={Link} to={wrapperInfo.closeButtonLink}>
           FECHAR
         </Button>
       </Header>
@@ -29,41 +29,25 @@ function DefaultWrapper(props) {
       </Main>
 
       <Footer>
-        {
-          footer.isCart ? (
-            <p>Valor total da compra R$ 999,99</p>
-          ) : (
-              <>
-                <button>-</button>
-                {footer.quantity}
-                <button>+</button>
-              R$ {footer.total}
-                <Button as={Link} to={footer.buttonTextLink}>
-                  {footer.buttonText}
-                </Button>
-              </>
-            )
-        }
+        {render && render}
+
+        <Button as={Link} to={wrapperInfo.footerButtonLink}>
+          {wrapperInfo.footerButtonText}
+        </Button>
       </Footer>
     </Wrapper >
   );
 }
 
 DefaultWrapper.propTypes = {
-  header: PropTypes.shape({
+  wrapperInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
-    isCart: PropTypes.bool.isRequired,
-    buttonText: PropTypes.string.isRequired,
-    buttonTextLink: PropTypes.string.isRequired,
-    buttonCloseLink: PropTypes.string.isRequired,
+    showHeaderButton: PropTypes.bool.isRequired,
+    footerButtonText: PropTypes.string.isRequired,
+    footerButtonLink: PropTypes.string.isRequired,
+    closeButtonLink: PropTypes.string.isRequired,
   }).isRequired,
-  footer: PropTypes.shape({
-    isCart: PropTypes.bool.isRequired,
-    quantity: PropTypes.number.isRequired,
-    total: PropTypes.number.isRequired,
-    buttonText: PropTypes.string.isRequired,
-    buttonTextLink: PropTypes.string.isRequired,
-  }).isRequired,
+  render: PropTypes.any,
 };
 
 export default DefaultWrapper;
