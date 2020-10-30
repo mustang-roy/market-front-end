@@ -12,7 +12,7 @@ class Categorias extends Component {
                 {data.map(categoria => { return (
                 <div key={categoria.id}>
                     <input onClick={this.props.onSetCategories}type="checkbox" value={categoria.name}/>
-                    <p>{categoria.name}</p>
+                    <p data-testid="category">{categoria.name}</p>
                 </div>
                 )})}
             </div>

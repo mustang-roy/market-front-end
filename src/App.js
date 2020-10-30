@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-
-import MainPage from './pages/MainPage';
 import DetailPage from './pages/DetailPage';
+import SearchPage from './pages/Searchpage';
 
 
 class App extends Component {
@@ -28,7 +27,7 @@ class App extends Component {
           <Route
             exact
             path="/"
-            render={() => <MainPage searchText={searchText} onSearchText={this.onSearchText} />}
+            render={() => <SearchPage searchText={searchText}/>}
           />
           <Route path="/detail-page" component={DetailPage}/>
         </Switch>
