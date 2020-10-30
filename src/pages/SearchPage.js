@@ -6,7 +6,7 @@ import * as API from "../services/api"
 // // import OrderItems from "../components/OrderItems";
 // // import Cart from "../components/Cart";
 // // import data from "../__mocks__/query";
-// // import Item from "../components/Item";
+import Item from "../components/Item";
 // // import dataSearch from "../__mocks__/query"
 
 class Searchpage extends Component {
@@ -14,8 +14,12 @@ class Searchpage extends Component {
     super(props);
     this.state = { 
       listCategories: [],
-     }
+      searchText: '',
+      dataSearch: []
+    }
 
+    this.onSearchText = this.onSearchText.bind(this);
+    this.onClickPesquisar = this.onClickPesquisar.bind(this);
     //  this.onSortToggle = this.onSortToggle.bind(this);
     //  this.onSetCategories = this.onSetCategories.bind(this);
   }
@@ -33,6 +37,16 @@ class Searchpage extends Component {
   //   : this.setState(prevState => ({ categories: [...prevState.categories, checkbox]}))
   // }
 
+  onSearchText(event) {
+    const { value } = event.target;
+    this.setState({ searchText: value });
+  };
+
+  onClickPesquisar() {
+    API.getProductsFromCategoryAndQuery('', this.state.searchText).
+    then((result) => this.setState({dataSearch: result}))
+  }
+
   componentDidMount() {
     API.getCategories().
     then((result) => this.setState({listCategories: result}))
@@ -45,15 +59,16 @@ class Searchpage extends Component {
       categoria.</h1>
         <Categorias data={this.state.listCategories} />
         <SearchBar
-          searchText={this.props.searchText}
-          onSearchData={this.props.onSearchData}
+          searchText={this.state.searchText}
+          onSearchText={this.onSearchText}
         />
+        <button data-testid="query-button" onClick={this.onClickPesquisar}>Pesquisar</button>
         {/* <OrderItems onSortToggle={this.onSortToggle} value={this.state.sort}/>
         <Cart data={data} /> */}
-        {/* <div>
+        <div>
 
-          {dataSearch.results.map(item => <Item data={item} key={item.id} onClickComprar={this.onClickComprar}/>)}
-        </div> */}
+          {this.state.dataSearch.length != 0 && this.state.dataSearch.results.map(item => <Item data={item} key={item.id} onClickComprar={this.onClickComprar}/>)}
+        </div>
       </div>
     );
   }

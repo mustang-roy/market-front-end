@@ -8,26 +8,16 @@ class App extends Component {
   constructor(props) {
     super(props);
 
-    this.onSearchText = this.onSearchText.bind(this);
-
-    this.state = { searchText: '' };
-  };
-
-  onSearchText(event) {
-    const { value } = event.target;
-    this.setState({ searchText: value });
   };
 
   render() {
-    const { searchText } = this.state;
-
     return (
       <BrowserRouter>
         <Switch>
           <Route
             exact
             path="/"
-            render={() => <SearchPage searchText={searchText}/>}
+            render={() => <SearchPage />}
           />
           <Route path="/detail-page" component={DetailPage}/>
         </Switch>

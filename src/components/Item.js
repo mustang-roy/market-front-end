@@ -40,7 +40,7 @@ class Item extends Component {
         const item = this.props.data;
 
         return (
-            <div>
+            <div data-testid="product">
               <h1>{item.title}</h1>
               <img src={item.thumbnail} alt={item.title}/>
               <p>R${item.price}</p>
