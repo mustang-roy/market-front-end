@@ -1,8 +1,8 @@
-import fetch from 'node-fetch'
-
 export async function getCategories() {
-  fetch('https://api.mercadolibre.com/sites/MLB/categories')
-    .then(response => response.json())
+  const result = await fetch('https://api.mercadolibre.com/sites/MLB/categories');
+  const resultJson = await result.json();
+
+  return resultJson;
 }
 
 export async function getProductsFromCategoryAndQuery( categoryId = '', query = '' ) {
@@ -11,6 +11,8 @@ export async function getProductsFromCategoryAndQuery( categoryId = '', query = 
   const joinElement = categoryId === '' ? '': '&';
 
   
-  fetch(`https://api.mercadolibre.com/sites/MLB/search?${category}${joinElement}${id}`)
-    .then(response => response.json())
+  const result = await fetch(`https://api.mercadolibre.com/sites/MLB/search?${category}${joinElement}${id}`);
+  const resultJson = await result.json();
+  
+  return resultJson;
 }
