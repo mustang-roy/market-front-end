@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import DetailPage from './pages/DetailPage';
-import SearchPage from './pages/Searchpage';
+import SearchPage from './pages/SearchPage';
 
 
 class App extends Component {
