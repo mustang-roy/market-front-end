@@ -7,6 +7,7 @@ import Cart from "../components/Cart";
 import data from "../__mocks__/query";
 import Item from "../components/Item";
 import dataSearch from "../__mocks__/query"
+import {getCategories, getProductsFromCategoryAndQuery} from "../services/api"
 
 class Searchpage extends Component {
   constructor(props) {
