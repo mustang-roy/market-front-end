@@ -42,7 +42,7 @@ class Item extends Component {
         return (
             <div>
               <h1>{item.title}</h1>
-              <img src={item.thumbnail} />
+              <img src={item.thumbnail} alt={item.title}/>
               <p>R${item.price}</p>
               <p>{item.shipping.free_shipping && 'Free'}</p>
               <button onClick={this.onClickComprar}>Adicionar</button>
