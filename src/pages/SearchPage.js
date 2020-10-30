@@ -1,6 +1,9 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
+
 import SearchBar from "../components/SearchBar";
 import Categorias from "../components/Categorias";
+import Button from '../components/Button';
 import * as API from "../services/api"
 // import categoriasData from "../__mocks__/categories"
 // // import OrderItems from "../components/OrderItems";
@@ -9,12 +12,12 @@ import * as API from "../services/api"
 // // import Item from "../components/Item";
 // // import dataSearch from "../__mocks__/query"
 
-class Searchpage extends Component {
+class SearchPage extends Component {
   constructor(props) {
     super(props);
-    this.state = { 
+    this.state = {
       listCategories: [],
-     }
+    }
 
     //  this.onSortToggle = this.onSortToggle.bind(this);
     //  this.onSetCategories = this.onSetCategories.bind(this);
@@ -35,7 +38,7 @@ class Searchpage extends Component {
 
   componentDidMount() {
     API.getCategories().
-    then((result) => this.setState({listCategories: result}))
+      then((result) => this.setState({ listCategories: result }))
   }
 
   render() {
@@ -54,10 +57,13 @@ class Searchpage extends Component {
 
           {dataSearch.results.map(item => <Item data={item} key={item.id} onClickComprar={this.onClickComprar}/>)}
         </div> */}
+        <Button as={Link} to="/cart" data-testid="shopping-cart-button">
+          Cart
+        </Button>
       </div>
     );
   }
 }
 
 
-export default Searchpage;
+export default SearchPage;

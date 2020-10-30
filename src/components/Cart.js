@@ -19,12 +19,13 @@ class CartIcon extends Component {
 
   render() {
 
-    const {results} = this.props.data;
+    const { results } = this.props.data;
 
     return (
-      
+
       <div>
-        <button onClick={this.openCart}>
+        <h1 data-testid="shopping-cart-empty-message">Seu carrinho está vazio</h1>
+        {/* <button onClick={this.openCart}>
           <span>icon</span>
         </button>
         {this.state.opened && (
@@ -42,7 +43,7 @@ class CartIcon extends Component {
             })}
             <Link to="/">Ir para o Carrinho</Link>
           </div>
-        )}
+        )} */}
       </div>
     );
   }
