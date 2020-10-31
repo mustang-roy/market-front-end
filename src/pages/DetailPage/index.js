@@ -11,12 +11,22 @@ const item = {
   price: 2500,
 };
 
-function DetailPage() {
+function DetailPage(props) {
   const { detailPage } = data;
+  const { state: { title, thumbnail } } = props.location;
 
   return (
     <DefaultWrapper wrapperInfo={detailPage} render={<ShoppingDetails item={item}/>}>
-      <h1>Content</h1>
+      <div>
+        <h1 data-testid="product-detail-name">{title}</h1>
+        <img src={thumbnail} alt={title}/>
+      </div>
+      <div>
+        <h1>Especificações técnicas</h1>
+        <p>
+          Top
+        </p>
+      </div>
     </DefaultWrapper>
   );
 }
