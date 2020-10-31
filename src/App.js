@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import DetailPage from "./pages/DetailPage";
-import SearchPage from "./pages/SearchPage/index";
-import Cart from "./pages/Cart";
+import DetailPage from './pages/DetailPage';
+import SearchPage from './pages/SearchPage';
+import Cart from './pages/Cart';
 
 class App extends Component {
   // constructor(props) {

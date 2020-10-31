@@ -1,25 +1,23 @@
 import React from 'react';
 
-import data from '../../__mocks__/detailPage';
-
 import DefaultWrapper from '../../components/DefaultWrapper';
 import ShoppingDetails from '../../components/ShoppingDetails';
 
-const item = {
-  title: 'Samsung Odyssey',
-  quantity: 3,
-  price: 2500,
+const detailPage = {
+  title: 'Detalhes do produto',
+  showHeaderButton: true,
+  closeButtonLink: '/',
 };
 
 function DetailPage(props) {
-  const { detailPage } = data;
-  const { state: { title, thumbnail } } = props.location;
+  const { state } = props.location;
+  const { title, thumbnail } = state;
 
   return (
-    <DefaultWrapper wrapperInfo={detailPage} render={<ShoppingDetails item={item}/>}>
+    <DefaultWrapper wrapperInfo={detailPage} render={<ShoppingDetails item={state} />}>
       <div>
         <h1 data-testid="product-detail-name">{title}</h1>
-        <img src={thumbnail} alt={title}/>
+        <img src={thumbnail} alt={title} />
       </div>
       <div>
         <h1>Especificações técnicas</h1>

@@ -14,7 +14,7 @@ function DefaultWrapper(props) {
         {wrapperInfo.title}
         {
           wrapperInfo.showHeaderButton && (
-            <Button as={Link} to="/cart">
+            <Button as={Link} to="/cart" data-testid="shopping-cart-button">
               Ir para o carrinho
             </Button>
           )
@@ -30,10 +30,6 @@ function DefaultWrapper(props) {
 
       <Footer>
         {render && render}
-
-        <Button as={Link} to={wrapperInfo.footerButtonLink}>
-          {wrapperInfo.footerButtonText}
-        </Button>
       </Footer>
     </Wrapper >
   );
@@ -43,8 +39,6 @@ DefaultWrapper.propTypes = {
   wrapperInfo: PropTypes.shape({
     title: PropTypes.string.isRequired,
     showHeaderButton: PropTypes.bool.isRequired,
-    footerButtonText: PropTypes.string.isRequired,
-    footerButtonLink: PropTypes.string.isRequired,
     closeButtonLink: PropTypes.string.isRequired,
   }).isRequired,
   render: PropTypes.any,

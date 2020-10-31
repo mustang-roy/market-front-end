@@ -18,7 +18,7 @@ class Item extends Component {
     if (!stringCarrinho) {
       localStorage.setItem('carrinho', JSON.stringify([this.props.data]));
     } else {
-      arrayCarrinho.push(this.props.data)
+      arrayCarrinho.push(this.props.data);
       localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
     }
   }
@@ -41,7 +41,7 @@ class Item extends Component {
           }}
           data-testid="product-detail-link">
           Detalhes
-              </Button>
+        </Button>
       </div>
     );
   }
