@@ -1,0 +1,9 @@
+.main-frame {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.search {
+  display: flex;
+  flex-direction: column;
+}
