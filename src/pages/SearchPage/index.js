@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-
+import "./style.css";
 import SearchBar from "../../components/SearchBar";
-import Categorias from "../../components/Categorias";
+import Categorias from "../../components/Categorias/index";
 import Button from "../../components/Button";
 import * as API from "../../services/api";
 // import categoriasData from "../__mocks__/categories"
@@ -60,32 +60,34 @@ class SearchPage extends Component {
 
   render() {
     return (
-      <div>
-        <div>
+      <div className="main-frame">
+        <Categorias data={this.state.listCategories} />
+        <div className="search-frame">
           <h1 data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </h1>
-          <SearchBar
-            searchText={this.state.searchText}
-            onSearchText={this.onSearchText}
-          />
+          <div>
+            <SearchBar
+              searchText={this.state.searchText}
+              onSearchText={this.onSearchText}
+            />
+            <button data-testid="query-button" onClick={this.onClickPesquisar}>
+              Pesquisar
+            </button>
+          </div>
+          <div>
+            {this.state.dataSearch.length !== 0 &&
+              this.state.dataSearch.results.map((item) => (
+                <Item
+                  data={item}
+                  key={item.id}
+                  onClickComprar={this.onClickComprar}
+                />
+              ))}
+          </div>
         </div>
-        <Categorias data={this.state.listCategories} />
-        <button data-testid="query-button" onClick={this.onClickPesquisar}>
-          Pesquisar
-        </button>
         {/* <OrderItems onSortToggle={this.onSortToggle} value={this.state.sort}/>
         <Cart data={data} /> */}
-        <div>
-          {this.state.dataSearch.length !== 0 &&
-            this.state.dataSearch.results.map((item) => (
-              <Item
-                data={item}
-                key={item.id}
-                onClickComprar={this.onClickComprar}
-              />
-            ))}
-        </div>
         <Button as={Link} to="/cart" data-testid="shopping-cart-button">
           Cart
         </Button>
