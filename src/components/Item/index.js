@@ -18,6 +18,7 @@ class Item extends Component {
       title,
       thumbnail,
       price,
+      total: price,
       quantity: 1,
     }
 
@@ -32,6 +33,7 @@ class Item extends Component {
 
       if (produdo) {
         produdo.quantity += 1
+        produdo.total = produdo.quantity*produdo.price
         localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
       } else {
         arrayCarrinho.push(pattern);

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import ShoppingDetails from "./ShoppingDetails";
+import ShoppingDetails from "./ShoppingDetails";
 // import { Link } from "react-router-dom";
 
 class CartIcon extends Component {
@@ -38,16 +38,7 @@ class CartIcon extends Component {
       <div>
         <div>
           {this.state.cartItems.map((item) => {
-            // <ShoppingDetails item={item} />
-            return (
-              <div key={item.id}>
-                <h1 data-testid="shopping-cart-product-name">{item.title}</h1>
-                <p data-testid="shopping-cart-product-quantity">
-                  Quantidade: 1
-                    </p>
-                <p>R${item.price}</p>
-              </div>
-            );
+            return <ShoppingDetails key={item.id} item={item} />
           })}
         </div>
       </div>
