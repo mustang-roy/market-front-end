@@ -10,11 +10,11 @@ const detailPage = {
 };
 
 function DetailPage(props) {
-  const { state } = props.location;
-  const { title, thumbnail } = state;
+  const { state: item } = props.location;
+  const { title, thumbnail } = item;
 
   return (
-    <DefaultWrapper wrapperInfo={detailPage} render={<ShoppingDetails item={state} />}>
+    <DefaultWrapper wrapperInfo={detailPage} render={<ShoppingDetails item={item} />}>
       <div>
         <h1 data-testid="product-detail-name">{title}</h1>
         <img src={thumbnail} alt={title} />

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 
 class OrderItems extends Component {
   render() {
@@ -8,7 +8,7 @@ class OrderItems extends Component {
         <option value={false}>Não Ordenar</option>
       </select>
     );
-  }
+  };
 }
 
 export default OrderItems;

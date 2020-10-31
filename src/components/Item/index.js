@@ -12,7 +12,7 @@ class Item extends Component {
   }
 
   onClickComprar() {
-    const {id, title, thumbnail,price} = this.props.data;
+    const { id, title, thumbnail, price } = this.props.item;
     const pattern = {
       id,
       title,
@@ -29,11 +29,11 @@ class Item extends Component {
       localStorage.setItem('carrinho', JSON.stringify([pattern]));
     } else {
 
-      const produdo = arrayCarrinho.find(item => id == item.id)
+      const product = arrayCarrinho.find(item => id === item.id);
 
-      if (produdo) {
-        produdo.quantity += 1
-        produdo.total = produdo.quantity*produdo.price
+      if (product) {
+        product.quantity += 1;
+        product.total = product.quantity * product.price;
         localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
       } else {
         arrayCarrinho.push(pattern);
@@ -43,20 +43,28 @@ class Item extends Component {
   }
 
   render() {
-    const item = this.props.data;
+    const { id, title, thumbnail, price, shipping } = this.props.item;
+    const shortItem = {
+      id,
+      title,
+      thumbnail,
+      price,
+      quantity: 1,
+      total: price,
+    }
 
     return (
       <div className="item" data-testid="product">
-        <p>{item.title}</p>
-        <img className="img-item" src={item.thumbnail} alt={item.title} />
-        <p>R${item.price}</p>
-        <p>{item.shipping.free_shipping && 'Free'}</p>
+        <p>{title}</p>
+        <img className="img-item" src={thumbnail} alt={title} />
+        <p>R${price}</p>
+        <p>{shipping.free_shipping && 'Free'}</p>
         <button data-testid="product-add-to-cart" onClick={this.onClickComprar}>Adicionar</button>
         <Button
           as={Link}
           to={{
-            pathname: '/detail-page',
-            state: item,
+            pathname: '/detail',
+            state: shortItem,
           }}
           data-testid="product-detail-link">
           Detalhes

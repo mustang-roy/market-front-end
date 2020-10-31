@@ -1,5 +1,6 @@
-import React, { Component } from "react";
-import "./style.css";
+import React, { Component } from 'react';
+
+import './style.css';
 class Categorias extends Component {
   render() {
     const { data, filterCategory } = this.props;
