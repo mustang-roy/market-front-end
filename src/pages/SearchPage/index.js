@@ -19,12 +19,13 @@ class SearchPage extends Component {
       listCategories: [],
       searchText: "",
       dataSearch: [],
+      category: "",
     };
 
     this.onSearchText = this.onSearchText.bind(this);
     this.onClickPesquisar = this.onClickPesquisar.bind(this);
     //  this.onSortToggle = this.onSortToggle.bind(this);
-    //  this.onSetCategories = this.onSetCategories.bind(this);
+    this.filterCategories = this.filterCategories.bind(this);
   }
 
   // onSortToggle(event) {
@@ -40,6 +41,14 @@ class SearchPage extends Component {
   //   : this.setState(prevState => ({ categories: [...prevState.categories, checkbox]}))
   // }
 
+  filterCategories(event) {
+    const { value } = event.target;
+    API.getProductsFromCategoryAndQuery(
+      value,
+      this.state.searchText
+    ).then((result) => this.setState({ dataSearch: result }));
+  }
+
   onSearchText(event) {
     const { value } = event.target;
     this.setState({ searchText: value });
@@ -47,7 +56,7 @@ class SearchPage extends Component {
 
   onClickPesquisar() {
     API.getProductsFromCategoryAndQuery(
-      "",
+      this.state.category,
       this.state.searchText
     ).then((result) => this.setState({ dataSearch: result }));
   }
@@ -62,7 +71,10 @@ class SearchPage extends Component {
     return (
       <div className="main-frame">
         <div className="category-list">
-          <Categorias data={this.state.listCategories} />
+          <Categorias
+            data={this.state.listCategories}
+            filterCategory={this.filterCategories}
+          />
         </div>
         <div className="search-frame">
           <h1 data-testid="home-initial-message">

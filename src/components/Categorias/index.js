@@ -2,24 +2,30 @@ import React, { Component } from "react";
 import "./style.css";
 class Categorias extends Component {
   render() {
-    const { data } = this.props;
+    const { data, filterCategory } = this.props;
 
     return (
       <>
         <h1>Categorias</h1>
-        <div className="category-list-items">
+        <div className="category-list-items" onChange={filterCategory}>
           {data.map((categoria) => {
             return (
-              <div key={categoria.id} className='item-category'>
+              <div key={categoria.id} className="item-category">
                 <input
+                  id={categoria.id}
                   className="checkbox"
                   onClick={this.props.onSetCategories}
-                  type="checkbox"
-                  value={categoria.name}
+                  type="radio"
+                  name="checkCategory"
+                  value={categoria.id}
                 />
-                <p className="text-category" data-testid="category">
+                <label
+                  className="text-category"
+                  data-testid="category"
+                  htmlFor={categoria.id}
+                >
                   {categoria.name}
-                </p>
+                </label>
               </div>
             );
           })}
