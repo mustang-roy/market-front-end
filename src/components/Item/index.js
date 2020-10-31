@@ -12,14 +12,31 @@ class Item extends Component {
   }
 
   onClickComprar() {
+    const {id, title, thumbnail,price} = this.props.data;
+    const pattern = {
+      id,
+      title,
+      thumbnail,
+      price,
+      quantity: 1,
+    }
+
     const stringCarrinho = localStorage.getItem('carrinho');
     const arrayCarrinho = JSON.parse(stringCarrinho);
 
     if (!stringCarrinho) {
-      localStorage.setItem('carrinho', JSON.stringify([this.props.data]));
+      localStorage.setItem('carrinho', JSON.stringify([pattern]));
     } else {
-      arrayCarrinho.push(this.props.data);
-      localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
+
+      const produdo = arrayCarrinho.find(item => id == item.id)
+
+      if (produdo) {
+        produdo.quantity += 1
+        localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
+      } else {
+        arrayCarrinho.push(pattern);
+        localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
+      }
     }
   }
 
