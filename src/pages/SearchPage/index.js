@@ -65,9 +65,6 @@ class SearchPage extends Component {
     API.getCategories().then((result) =>
       this.setState({ listCategories: result })
     );
-    if (localStorage.length > 0) {
-      localStorage.clear();
-    }
   }
 
   render() {
