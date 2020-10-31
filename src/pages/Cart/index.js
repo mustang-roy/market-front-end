@@ -1,25 +1,22 @@
 import React from 'react';
 
-import data from '../../__mocks__/detailPage';
-
 import DefaultWrapper from '../../components/DefaultWrapper';
-import ShoppingDetails from '../../components/ShoppingDetails';
 import Cart from '../../components/Cart';
 
-const item = {
-  title: 'Samsung Odyssey',
-  quantity: 3,
-  price: 2500,
+const detailPage = {
+  title: 'Carrinho de compras',
+  showHeaderButton: false,
+  closeButtonLink: '/',
 };
 
-function DetailPage() {
-  const { detailPage } = data;
+const button = <button>Comprar</button>;
 
+function CartPage() {
   return (
-    <DefaultWrapper wrapperInfo={detailPage} render={<ShoppingDetails item={item} />}>
-      <Cart data={data} />
+    <DefaultWrapper wrapperInfo={detailPage} render={button}>
+      <Cart />
     </DefaultWrapper>
   );
 }
 
-export default DetailPage;
+export default CartPage;
