@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Button from '../Button';
 import './style.css'
 
 class Item extends Component {
     constructor(props) {
         super(props);
         this.onClickComprar = this.onClickComprar.bind(this);
-        this.showAe = this.showAe.bind(this);
+        // this.showAe = this.showAe.bind(this);
     }
     
     onClickComprar() {
@@ -30,12 +32,12 @@ class Item extends Component {
 
       }
     
-    showAe(){
-        const arrayCarrinho = localStorage.getItem('carrinho')
-        console.log(typeof arrayCarrinho)
-        console.log(arrayCarrinho.split(','))
-        console.log(typeof arrayCarrinho.split(','))
-    }
+    // showAe(){
+        // const arrayCarrinho = localStorage.getItem('carrinho')
+        // console.log(typeof arrayCarrinho)
+        // console.log(arrayCarrinho.split(','))
+        // console.log(typeof arrayCarrinho.split(','))
+    // }
 
     render() { 
         const item = this.props.data;
@@ -47,7 +49,16 @@ class Item extends Component {
               <p>R${item.price}</p>
               <p>{item.shipping.free_shipping && 'Free'}</p>
               <button onClick={this.onClickComprar}>Adicionar</button>
-              <button onClick={this.showAe}>Mostrae</button>
+              <Button
+                as={Link}
+                to={{
+                  pathname: '/detail-page',
+                  state: item,
+                }}
+                // onClick={this.showAe}
+                data-testid="product-detail-link">
+                  Detalhes
+              </Button>
             </div>
         );
     }
