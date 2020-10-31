@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 class CartIcon extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class CartIcon extends Component {
 
   render() {
 
-    const { results } = this.props.data;
+    // const { results } = this.props.data;
 
     return (
 

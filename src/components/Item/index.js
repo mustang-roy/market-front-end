@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './style.css'
 
 class Item extends Component {
     constructor(props) {
@@ -40,9 +41,9 @@ class Item extends Component {
         const item = this.props.data;
 
         return (
-            <div data-testid="product">
-              <h1>{item.title}</h1>
-              <img src={item.thumbnail} alt={item.title}/>
+            <div className="item" data-testid="product">
+              <p>{item.title}</p>
+              <img className="img-item" src={item.thumbnail} alt={item.title}/>
               <p>R${item.price}</p>
               <p>{item.shipping.free_shipping && 'Free'}</p>
               <button onClick={this.onClickComprar}>Adicionar</button>
