@@ -1,15 +1,11 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import DetailPage from './pages/DetailPage';
 import SearchPage from './pages/SearchPage';
-import Cart from './pages/Cart';
+import CartPage from './pages/CartPage';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-
-  // };
   componentDidMount() {
     localStorage.clear();
   }
@@ -19,8 +15,8 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" render={() => <SearchPage />} />
-          <Route path="/cart" component={Cart} />
-          <Route path="/detail-page" component={DetailPage} />
+          <Route path="/cart" component={CartPage} />
+          <Route path="/detail" component={DetailPage} />
         </Switch>
       </BrowserRouter>
     );
