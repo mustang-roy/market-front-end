@@ -61,14 +61,16 @@ class SearchPage extends Component {
   render() {
     return (
       <div>
-        <h1 data-testid="home-initial-message">
-          Digite algum termo de pesquisa ou escolha uma categoria.
-        </h1>
+        <div>
+          <h1 data-testid="home-initial-message">
+            Digite algum termo de pesquisa ou escolha uma categoria.
+          </h1>
+          <SearchBar
+            searchText={this.state.searchText}
+            onSearchText={this.onSearchText}
+          />
+        </div>
         <Categorias data={this.state.listCategories} />
-        <SearchBar
-          searchText={this.state.searchText}
-          onSearchText={this.onSearchText}
-        />
         <button data-testid="query-button" onClick={this.onClickPesquisar}>
           Pesquisar
         </button>
