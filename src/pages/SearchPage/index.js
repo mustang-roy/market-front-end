@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
-import SearchBar from "../../components/SearchBar";
+import SearchBar from "../../components/SearchBar/index";
 import Categorias from "../../components/Categorias/index";
 import Button from "../../components/Button";
 import * as API from "../../services/api";
@@ -9,7 +9,7 @@ import * as API from "../../services/api";
 // // import OrderItems from "../components/OrderItems";
 // // import Cart from "../components/Cart";
 // // import data from "../__mocks__/query";
-import Item from "../../components/Item";
+import Item from "../../components/Item/index";
 // // import dataSearch from "../__mocks__/query"
 
 class SearchPage extends Component {
@@ -61,12 +61,14 @@ class SearchPage extends Component {
   render() {
     return (
       <div className="main-frame">
-        <Categorias data={this.state.listCategories} />
+        <div className="category-list">
+          <Categorias data={this.state.listCategories} />
+        </div>
         <div className="search-frame">
           <h1 data-testid="home-initial-message">
             Digite algum termo de pesquisa ou escolha uma categoria.
           </h1>
-          <div>
+          <div className="search-engine">
             <SearchBar
               searchText={this.state.searchText}
               onSearchText={this.onSearchText}
@@ -75,7 +77,7 @@ class SearchPage extends Component {
               Pesquisar
             </button>
           </div>
-          <div>
+          <div className="list-item">
             {this.state.dataSearch.length !== 0 &&
               this.state.dataSearch.results.map((item) => (
                 <Item
