@@ -58,7 +58,7 @@ class Item extends Component {
         <p>{title}</p>
         <img className="img-item" src={thumbnail} alt={title} />
         <p>R${price}</p>
-        {shipping.free_shipping && <p data-testid="free-shipping">Free</p>}
+        { shipping.free_shipping && <p data-testid="free-shipping">Free</p> }
         <button data-testid="product-add-to-cart" onClick={this.onClickComprar}>Adicionar</button>
         <Button
           as={Link}
