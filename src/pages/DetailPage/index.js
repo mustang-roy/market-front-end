@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 
-import DefaultWrapper from "../../components/DefaultWrapper";
-import ShoppingDetails from "../../components/ShoppingDetails";
-import { useForm } from "react-hook-form";
-import "./style.css";
+import DefaultWrapper from '../../components/DefaultWrapper';
+import ShoppingDetails from '../../components/ShoppingDetails';
+import { useForm } from 'react-hook-form';
+import './style.css';
 
 const detailPage = {
   title: "Detalhes do produto",

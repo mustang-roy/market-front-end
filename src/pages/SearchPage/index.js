@@ -8,6 +8,7 @@ import Item from '../../components/Item';
 
 import './style.css';
 import Button from '../../components/Button';
+import cartIcon from '../../components/cartIcon';
 
 class SearchPage extends Component {
   constructor(props) {
@@ -85,6 +86,7 @@ class SearchPage extends Component {
         <Button as={Link} to="/cart" data-testid="shopping-cart-button">
           Cart
         </Button>
+        <cartIcon/>
       </div>
     );
   }
