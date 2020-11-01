@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import DefaultWrapper from '../../components/DefaultWrapper';
 import Cart from '../../components/Cart';
+import Button from '../../components/Button';
 
 const detailPage = {
   title: 'Carrinho de compras',
@@ -9,7 +11,7 @@ const detailPage = {
   closeButtonLink: '/',
 };
 
-const button = <button>Comprar</button>;
+const button = <Button as={Link} to="/checkout" data-testid="checkout-products">Comprar</Button>;
 
 function CartPage() {
   return (
