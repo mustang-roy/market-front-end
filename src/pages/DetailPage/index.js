@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+import CartIcon from '../../components/CartIcon'
 import DefaultWrapper from '../../components/DefaultWrapper';
 import ShoppingDetails from '../../components/ShoppingDetails';
 import { useForm } from 'react-hook-form';
@@ -32,8 +33,9 @@ function DetailPage(props) {
   return (
     <DefaultWrapper
       wrapperInfo={detailPage}
-      render={<ShoppingDetails item={item} />}
+      render={<ShoppingDetails item={item} modifyCart={props.modifyCart} />}
     >
+      <CartIcon cartItems={props.cartItems} />
       <div>
         <h1 data-testid="product-detail-name">{title}</h1>
         <img src={thumbnail} alt={title} />

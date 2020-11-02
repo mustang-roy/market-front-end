@@ -8,7 +8,7 @@ import Item from '../../components/Item';
 
 import './style.css';
 import Button from '../../components/Button';
-import cartIcon from '../../components/cartIcon';
+import CartIcon from '../../components/CartIcon';
 
 class SearchPage extends Component {
   constructor(props) {
@@ -78,15 +78,12 @@ class SearchPage extends Component {
             {
               this.state.dataSearch.length !== 0 &&
               this.state.dataSearch.results.map((item) => (
-                <Item item={item} key={item.id} />
+                <Item item={item} key={item.id} modifyCart={this.props.modifyCart} cartItems={this.props.cartItems}/>
               ))
             }
           </div>
         </div>
-        <Button as={Link} to="/cart" data-testid="shopping-cart-button">
-          Cart
-        </Button>
-        <cartIcon/>
+        <CartIcon cartItems={this.props.cartItems}/>
       </div>
     );
   }

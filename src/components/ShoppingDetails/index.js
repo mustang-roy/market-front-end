@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { Wrapper } from './style';
 
-function ShoppingDetails({ item }) {
+function ShoppingDetails({ item, modifyCart }) {
   const { title, price, id } = item;
 
   const [quantity, setQuantity] = useState(item.quantity);
@@ -38,6 +38,7 @@ function ShoppingDetails({ item }) {
 
     if (!stringCarrinho) {
       localStorage.setItem('carrinho', JSON.stringify([item]));
+      modifyCart()
     } else {
       const product = arrayCarrinho.find(item => id === item.id);
 
@@ -45,9 +46,11 @@ function ShoppingDetails({ item }) {
         product.quantity += 1
         product.total = product.quantity * product.price
         localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
+        modifyCart()
       } else {
         arrayCarrinho.push(item);
         localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
+        modifyCart()
       }
     }
   }
