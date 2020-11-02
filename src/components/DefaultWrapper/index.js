@@ -13,11 +13,11 @@ function DefaultWrapper(props) {
       <Header>
         {wrapperInfo.title}
         {
-          wrapperInfo.showHeaderButton && (
-            <Button as={Link} to="/cart" data-testid="shopping-cart-button">
-              Ir para o carrinho
-            </Button>
-          )
+          // wrapperInfo.showHeaderButton && (
+          //   // <Button as={Link} to="/cart" data-testid="shopping-cart-button">
+          //   //   Ir para o carrinho
+          //   // </Button>
+          // )
         }
         <Button as={Link} to={wrapperInfo.closeButtonLink}>
           FECHAR
