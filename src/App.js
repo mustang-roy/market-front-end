@@ -7,6 +7,23 @@ import CartPage from './pages/CartPage';
 import CheckoutPage from './pages/CheckoutPage';
 
 class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      cartElements: 0
+    }
+
+    this.setCartElements = this.setCartElements.bind(this)
+  }
+
+  setCartElements() {
+    const cartItems = localStorage.getItem('carrinho')
+    if (cartItems) {
+      const sum = JSON.parse(cartItems).reduce((acc, act) => (acc + act.quantity), 0)
+      this.setState({ cartElements: sum })
+    }
+  }
+
   componentDidMount() {
     localStorage.clear();
   }
@@ -15,9 +32,9 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/" render={() => <SearchPage />} />
+          <Route exact path="/" render={() => <SearchPage modifyCart={this.setCartElements} cartItems={this.state.cartElements} />} />
           <Route path="/cart" component={CartPage} />
-          <Route path="/detail" component={DetailPage} />
+          <Route path="/detail" render={(props) => <DetailPage {...props} modifyCart={this.setCartElements} cartItems={this.state.cartElements} />} />
           <Route path="/checkout" component={CheckoutPage} />
         </Switch>
       </BrowserRouter>
