@@ -40,6 +40,7 @@ class Item extends Component {
         localStorage.setItem('carrinho', JSON.stringify(arrayCarrinho));
       }
     }
+    this.props.modifyCart()
   }
 
   render() {
@@ -53,6 +54,7 @@ class Item extends Component {
       total: price,
     }
 
+
     return (
       <div className="item" data-testid="product">
         <p>{title}</p>
@@ -64,7 +66,7 @@ class Item extends Component {
           as={Link}
           to={{
             pathname: '/detail',
-            state: shortItem,
+            state: shortItem
           }}
           data-testid="product-detail-link">
           Detalhes
