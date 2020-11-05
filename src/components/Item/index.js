@@ -9,7 +9,6 @@ class Item extends Component {
     super(props);
 
     this.onClickComprar = this.onClickComprar.bind(this);
-    // this.qualquercoisa = this.qualquercoisa.bind(this); 
   }
 
   onClickComprar() {
