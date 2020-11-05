@@ -43,10 +43,6 @@ class Item extends Component {
     this.props.modifyCart()
   }
 
-  // qualquercoisa(){
-  //   console.log('oi')
-  // }
-
   render() {
     const { id, title, thumbnail, price, shipping } = this.props.item;
     const shortItem = {
